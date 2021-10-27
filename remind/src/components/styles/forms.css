@@ -13,13 +13,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 45%;
+        width: 65%;
         height: 60%;
         background: rgba(237, 192, 226, 0.87);
         border-radius: 15px;
         margin-top: 8%;
     }
-    h1 {
+    .form-header {
         font-family: 'Handlee', cursive;
         font-size: 50px;
         color: #C490E4;
@@ -28,27 +28,36 @@
 
     input {
         width: 60%;
-        height: 5%;
-        padding: 1px;
+        height: 5.5%;
+        padding: 1vh;
         font-family: 'Didact Gothic', sans-serif;
-        font-size: 15px;
+        font-size: 19px;
         color: #939393;
-        border:#C490E4;
+        border: 2px solid #C490E4;
         border-radius: 8px;
     }
     .text-link {
-        color: #939393;
+        font-family: 'Handlee', cursive;
+        font-size: 20px;
+        color: #32253a;
     }
   
 
-    button {
+    .btn-form, .g-btn-form {
         font-family: 'Handlee', cursive;
-        font-size: 15px;
+        font-size: 18px;
         color: #F9F9F9;
         width: 35%;
         height: 5%;
+        padding: 2px;
         margin-bottom:5px ;
         background: #C490E4;
         border-radius: 10px;
         border: none;
+    }
+    .g-btn-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size:  13px;
     }

@@ -4,9 +4,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Banner from './components/banner'
+import Banner from './components/banner';
 import Login from './components/login';
-import SignIn from './components/signIn';
+import Register from './components/register';
 
 
 function App() {
@@ -18,9 +18,12 @@ function App() {
             <Login/>
           </Route>
             <Route path="/signin">
-            <Banner/>
-            <SignIn/>
-          </Route>
+              <Banner/>
+              <Register/>
+            </Route>
+            <Route path="/home">
+              <Banner/>
+            </Route>
         </Switch> 
     </Router>
   );
