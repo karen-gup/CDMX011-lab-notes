@@ -12,31 +12,19 @@ import Home from './components/home'
 import Banner from './components/banner';
 
 function App() {
-
-  const [user, setUser] = useState({});
-  useEffect(() => {
-  auth.onAuthStateChanged(user => {
-      if(user?.uid) {
-          setUser({uid: user.uid})
-      } 
-  })
-}, [])
-
-
   return (
     <Router>
         <Switch>
           <Route path="/" exact>
             <Banner/>
-            <Login user={setUser}/>
+            <Login/>
           </Route>
             <Route path="/signin">
               <Banner/>
-              <Register user={user}/>
+              <Register/>
             </Route>
             <Route path="/home">
-              <Banner/>
-              <Home user={user}/>
+              <Home/>
             </Route>
         </Switch> 
     </Router>

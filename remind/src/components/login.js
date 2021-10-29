@@ -35,7 +35,6 @@ function Login () {
     }
 
     return (
-        <div>
            <div className="first-body">
                 <form className="form-container">
                     <h1 className="form-header">INICIA SESIÓN</h1>
@@ -56,7 +55,6 @@ function Login () {
                         <Link to="/signin"> Regístrate</Link>
                     </p>
                 </form>
-            </div>
             </div>)
    
 }

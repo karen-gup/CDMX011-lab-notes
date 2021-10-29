@@ -12,8 +12,8 @@ function Home () {
     const [user, setUser] = useState({});
         useEffect(() => {
         auth.onAuthStateChanged(user => {
-            if(user?.uid) {
-                setUser({uid: user.uid})
+            if(user) {
+                setUser({email: user.email})
             } 
         })
     }, [])
