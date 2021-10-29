@@ -4,5 +4,6 @@ export const createUser = (email,password) => auth.createUserWithEmailAndPasswor
 
 export const gmailAuth = () => auth.signInWithPopup(provider)
     
-
 export const logIn = (email,password) => auth.signInWithEmailAndPassword(email, password);
+
+export const logOut = () => auth.signOut()

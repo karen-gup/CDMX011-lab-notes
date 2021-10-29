@@ -3,7 +3,7 @@
     .banner {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         height: 120px;
         background: #C490E4;
         font-family: 'Handlee', cursive;
@@ -13,4 +13,8 @@
     .icon-app {
         width: 112px;
         height: 112px;
+    }
+
+    .title-icon{
+        display: flex;
     }
