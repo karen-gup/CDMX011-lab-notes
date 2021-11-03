@@ -16,10 +16,8 @@ function Register (){
             console.log(email)
             createUser(email,password)
             .then(() => {
-                // Signed in
-               history.push('/home')
+               history.push('/wallNotes')
                 console.log('usuario registrado');
-                // ...
               }).catch((error) => {
                 setError(error.message);
               });
@@ -29,19 +27,18 @@ function Register (){
         e.preventDefault()
         gmailAuth()
         .then(() => {
-            history.push('/home')
+            history.push('/wallNotes')
             console.log('Logeado con Gmail')
-
         }).catch((error) => {
             alert(error.message);
           });
     }
+    
     return (
         <div className="first-body">
             <form className="form-container">
                 <h1 className="form-header">REGISTRATE</h1>
-                {/* <input placeholder="Ingresa tu nombre" /> */}
-                <br />
+                <br/>
                 <input onChange={(e) => { setEmail(e.target.value); } }
                     type="email" placeholder="Ingresa tu correo electrónico" />
                 <br />
@@ -53,8 +50,8 @@ function Register (){
                 <br />
                 <p className="error-p">{error} </p>
                 <br />
-                <input onClick={handleRegister}
-                    type="submit" className="btn-form" value="REGISTRAR" />
+                <button onClick={handleRegister}
+                    type="submit" className="btn-form">REGISTRAR</button>
                 <button onClick={handleGmail}
                     className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                 <br />

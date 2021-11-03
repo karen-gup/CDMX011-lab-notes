@@ -45,7 +45,8 @@
 
     .btn-form, .g-btn-form {
         font-family: 'Handlee', cursive;
-        font-size: 18px;
+        font-size: 22px;
+        font-weight: 600;
         color: #F9F9F9;
         width: 35%;
         height: 5%;
@@ -59,7 +60,7 @@
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        font-size:  13px;
+        font-size:  18px;
     }
     .error-p{
         color: rgb(199, 21, 21);

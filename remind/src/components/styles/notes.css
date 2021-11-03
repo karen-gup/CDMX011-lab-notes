@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+.btn-add {
+    font-family: 'Handlee', cursive;
+    font-size: 55px;
+    font-weight: 600;
+    color: #C490E4;
+    width: 45%;
+    height: 80px;
+    background: #F9F9F9;
+    border-radius: 10px;
+    border: 3px solid rgba(237, 192, 226, 0.87);
+    margin: 5%;
+}
