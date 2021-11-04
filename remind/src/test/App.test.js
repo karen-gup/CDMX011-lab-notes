@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from '../App'
 
 beforeEach(() => render(<App/>));
@@ -15,9 +15,3 @@ test("Cuando renderiza el componente Login", () => {
   
 });
 
-test("Cuando el usuario da click en ENTRAR", () => {
-        screen.getByPlaceholderText('Correo electronico').value = 'correo@correo.com';
-        screen.getByPlaceholderText('Contraseña').value = '123456';
-        fireEvent.click(screen.getByRole("button", {name: /ENTRAR/i}));
-       expect(screen.queryByText(/error/i)).not.toBeInTheDocument()
-});

@@ -3,11 +3,12 @@
     .banner {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: space-around;
         height: 120px;
-        background: #C490E4;
+        background: #864879;
         font-family: 'Handlee', cursive;
         font-size: 85px;
+        font-weight: 700;
         color: #F9F9F9;
 }
     .icon-app {

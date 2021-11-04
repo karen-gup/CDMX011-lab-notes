@@ -5,7 +5,7 @@
         justify-content: center;
         width: 100%;
         height: 100%;
-        background:#CDF0EA;
+        background: #3F3351;
     }
 
     .form-container {
@@ -22,24 +22,25 @@
     .form-header {
         font-family: 'Handlee', cursive;
         font-size: 50px;
-        color: #C490E4;
+        color: #864879;
         margin-bottom: 5px;
     }
 
     input {
-        width: 60%;
-        height: 5.5%;
+        width: 70%;
+        height: 4.5vh;
         padding: 1vh;
         font-family: 'Didact Gothic', sans-serif;
         font-size: 19px;
         color: #939393;
-        border: 2px solid #C490E4;
-        border-radius: 8px;
+        border: 2px solid #864879;
+        border-radius: 18px;
     }
     .text-link {
         font-family: 'Handlee', cursive;
         font-size: 20px;
-        color: #32253a;
+        font-weight: 600;
+        color: #864879;
     }
   
 
@@ -52,15 +53,18 @@
         height: 5%;
         padding: 2px;
         margin-bottom:5px ;
-        background: #C490E4;
+        background: #864879;
         border-radius: 10px;
         border: none;
     }
     .g-btn-form {
         display: flex;
         align-items: center;
+        background: #FDFDFD;
         justify-content: space-evenly;
-        font-size:  18px;
+        font-size:  14px;
+        font-weight: 600;
+        color: #864879;
     }
     .error-p{
         color: rgb(199, 21, 21);

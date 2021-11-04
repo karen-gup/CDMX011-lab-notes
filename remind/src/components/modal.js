@@ -11,13 +11,14 @@ function Modal ({ showModal, setShowModal }) {
      createNotes(title, note)
      .then(() => {
       console.log('Ya esta en FireStore')
+      setShowModal((visible) => !visible)
      })
   };
   return showModal ? (
     <div className="modal">
       <form className="form-createNote" >
       <div className="content-btn-close">
-        <button className="btn-close" onClick={() => setShowModal((prev) => !prev)}>x</button>
+        <button className="btn-close" onClick={() => setShowModal((visible) => !visible)}>x</button>
       </div>
         <input onChange={(e) => {setTitle(e.target.value)}}
         name="title-note" id="title-note" placeholder="Título"/>
@@ -28,7 +29,7 @@ function Modal ({ showModal, setShowModal }) {
         type="submit" className="btn-add-note">Guardar</button>
       </form>
     </div>
-  ) : <h3>Modal oculto</h3>;
+  ) : null;
 };
 
 export default Modal;

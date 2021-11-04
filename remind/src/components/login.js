@@ -50,6 +50,7 @@ function Login () {
                     <br />
                     <button onClick={handleSignIn}
                         type="submit" className="btn-form">ENTRAR</button>
+                    <br/>
                     <button onClick={handleGmail}
                         className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                     <br />

@@ -52,6 +52,7 @@ function Register (){
                 <br />
                 <button onClick={handleRegister}
                     type="submit" className="btn-form">REGISTRAR</button>
+                <br/>
                 <button onClick={handleGmail}
                     className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                 <br />

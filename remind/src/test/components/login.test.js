@@ -1,7 +1,9 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Login from '../../components/login'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-afterEach(cleanup);
+beforeEach(() => render(<Login/>));
+
 
 test("Cuando renderiza el componente Register", () => {
         
