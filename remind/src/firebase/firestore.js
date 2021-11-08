@@ -5,3 +5,5 @@ export const createNotes = (title, note) => db.collection('reminds').doc().set({
     note,
 });
 export const showNotes = (querySnapshot) => db.collection('reminds').onSnapshot(querySnapshot);
+
+export const removeNote = (id) => db.collection('reminds').doc(id).delete();

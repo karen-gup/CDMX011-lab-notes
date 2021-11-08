@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState, useEffect } from "react";
-import { auth, db } from '../firebase/config';
+import { useState } from "react";
+// import { auth, db } from '../firebase/config';
 import Modal from "./modal";
 import WallNotes from './WallNotes'
 import {BannerWall} from "./banner"

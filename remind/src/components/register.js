@@ -30,7 +30,7 @@ function Register (){
             history.push('/wallNotes')
             console.log('Logeado con Gmail')
         }).catch((error) => {
-            alert(error.message);
+            console.log(error.message);
           });
     }
     

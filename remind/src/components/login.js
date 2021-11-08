@@ -32,7 +32,7 @@ function Login () {
             console.log(user, userPhoto);
             console.log('Logeado con Gmail')
         }).catch((error) => {
-            alert(error.message);
+            console.log(error.message);
           });
     }
 

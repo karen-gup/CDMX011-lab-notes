@@ -48,4 +48,11 @@
     color: #3F3351;
     font-family: Didact Gothic;
     font-size: 20px;
+    height: 80%;
+}
+
+.content-delete {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
 }

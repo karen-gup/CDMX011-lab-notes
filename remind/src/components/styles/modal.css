@@ -11,12 +11,17 @@
     align-items: center;
 }
 
+.content-btn-close {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 5em;
+}
+
 .btn-close {
-    color: #FF5A5C;
+    color: #864879;
     font-size: 61px;
     border: none;
-    margin-right: 2%;
-    margin-bottom: 10px;
     background: none;
 }
 
@@ -56,6 +61,7 @@
 
 #text-note {
     width: 80%;
+    height: 75%;
     font-family: 'Didact Gothic', sans-serif;
     font-size: 32px;
     border-radius: 10px;
