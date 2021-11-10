@@ -1,56 +1,31 @@
-import React, {useEffect, useState} from "react";
-import { db } from "../firebase/config";
-import {removeNote} from '../firebase/firestore';
-import swal from 'sweetalert';
-import remove from '../img/remove.png'
-import "./styles/notes.css";
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState } from "react";
+// import { getUser } from '../firebase/auth';
+import Modal from "./modal";
+import Notes from './notes';
+import {BannerWall} from "./banner"
+import "./styles/notes.css"
 
-function WallNotes () {
-    const [notes, setNotes] = useState([]);
+function Wallnotes ({user}) {
 
-    useEffect(() => {
-        const getNotes = async () => {
-            db.collection('reminds').onSnapshot((querySnapshot) => {
-              const docs = [];
-              querySnapshot.forEach((doc) => {
-                docs.push({ ...doc.data(), id: doc.id });
-              });
-              setNotes(docs);
-            });
-          };
-        getNotes();
-      }, []);
-    
-      const alertRemove =(id) => {
-        swal({
-          title: "Eliminar",
-          text: "¿deseas eliminar esta nota?",
-          icon: "warning",
-          buttons:["No","Sí"]
-        }).then(confirm => {
-          if(confirm){
-            swal({text:"Se ha eliminado nota",
-              icon:"success", timer:"1000"});
-            removeNote(id);
-          }
-        });
-     }
-      
+    const [showModal, setShowModal] = useState(false);
+    const openModal = () => {
+   
+    setShowModal((visible) => !visible);
+    };
+    // console.log(userCurrent)
 
-return (
-    <div className="div-notes">
-        {notes.map((note) => (
-            <section className="content-note" key={note.id} >
-                <h2 className="title-note">{note.title}</h2>
-                <p className="text-note">{note.note}</p>
-              <div className="content-delete">
-              <img onClick={()=>alertRemove(note.id)}
-              src={remove} alt="icon-img" className="icon-remove" />
-              </div>
-            </section>
-
-  ))}
-        </div>
-);
+return(
+        <div className="body-wall">
+              <BannerWall/>
+          <div className="main-bnt">
+            <p className="text-profile">My reminds <br/> {user.email}</p>
+            <button onClick={openModal}
+            className="btn-add"> Añadir nota   + </button>
+          </div> 
+              <Modal showModal={showModal} setShowModal={setShowModal} user={user}/>
+              <Notes user={user}/>
+      </div>
+    ) 
 }
-export default WallNotes
+export default Wallnotes

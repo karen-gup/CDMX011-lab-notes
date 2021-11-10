@@ -1,39 +1,59 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
-// import { auth, db } from '../firebase/config';
-import Modal from "./modal";
-import WallNotes from './WallNotes'
-import {BannerWall} from "./banner"
-import "./styles/notes.css"
+import React, {useEffect, useState} from "react";
+import { db } from "../firebase/config";
+import {removeNote} from '../firebase/firestore';
+import swal from 'sweetalert';
+import remove from '../img/remove.png'
+import "./styles/notes.css";
 
-function Notes () {
-/*     const [user, setUser] = useState({});
-        useEffect(() => {
-            auth.onAuthStateChanged(user => {
-            if(user) {
-              setUser({email: user.email})
-            } else {
-              setUser({null:''})
-            }
-        })
-    }, [])
-    console.log(user) */
-    const [showModal, setShowModal] = useState(false);
-    const openModal = () => {
-    console.log('Aqui va el modal')
+function Notes (user) {
+    const [notes, setNotes] = useState([]);
+    let userCollection = notes.map((note)=> note.user.email)
+    const userValue= Object.values(user.user)
+    console.log(userCollection.includes(userValue[0])) 
+    useEffect(() => {
+        const getNotes = async () => {  
+          db.collection('reminds').onSnapshot((querySnapshot) => {
+              const docs = [];
+              querySnapshot.forEach((doc) => {
+              docs.push({ ...doc.data(), id: doc.id });
+              });
+              setNotes(docs);
+            });
+          };
+        getNotes();
+      }, []);
+    
+      const alertRemove =(id) => {
+        swal({
+          title: "Eliminar",
+          text: "¿deseas eliminar esta nota?",
+          icon: "warning",
+          buttons:["No","Sí"]
+        }).then(confirm => {
+          if(confirm){
+            swal({text:"Se ha eliminado nota",
+              icon:"success", timer:"1000"});
+            removeNote(id);
+          }
+        });
+     }
+    
+      
+return (
+    <div className="div-notes">
+        {notes.map((note) => (
+            <section className="content-note" key={note.id} >
+                <h2 className="title-note">{note.title}</h2>
+                <p className="text-note">{note.note}</p>
+                
+              <div className="content-delete">
+              <img onClick={()=>alertRemove(note.id)}
+              src={remove} alt="icon-img" className="icon-remove" />
+              </div>
+            </section>
 
-    setShowModal((visible) => !visible);
-    };
-
-
-return(
-        <div className="body-wall">
-              <BannerWall/>
-            <button onClick={openModal}
-            className="btn-add"> Añadir nota   + </button>
-              <Modal showModal={showModal} setShowModal={setShowModal} />
-              <WallNotes/>
+  ))}
         </div>
-    ) 
+)
 }
 export default Notes

@@ -7,12 +7,12 @@ import "./styles/banner.css"
 
 export function Banner (){
     return (
-    <div className="banner">
+    <header className="banner">
         <div className="title-icon">
             <p>Reminds</p>
             <img src={icon} alt="icon-img" className="icon-app" />
         </div>
-    </div>)
+    </header>)
 }
 export function BannerWall () {
     const history = useHistory();
@@ -24,13 +24,13 @@ export function BannerWall () {
         })
     }
     return (
-       <div className="banner">
+       <header className="banner">
                 <div className="title-icon">
                     <p>Reminds</p>
                     <img src={icon} alt="icon-img" className="icon-app" />
                 </div>
                     <img onClick={handleLogOut}
                     src={exit} alt="logOut-icon" />
-            </div>  
+            </header>  
         )
 }

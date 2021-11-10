@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
+.main-bnt{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.text-profile{
+    font-family: Didact Gothic;
+    font-size: 22px;
+    color:  #F5DFF0;
+}
+
 .btn-add {
     font-family: 'Handlee', cursive;
     font-size: 49px;
@@ -17,8 +29,6 @@
 .div-notes {
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
-    height: 100%;
     flex-wrap: wrap;
     flex-direction: row;
 }
