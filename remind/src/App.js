@@ -2,8 +2,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  BrowserRouter,
-} from "react-router-dom";
+  } from "react-router-dom";
 import { auth } from './firebase/config';
 import { useState, useEffect } from 'react';
 import Login from './components/login';
@@ -25,7 +24,7 @@ function App() {
             } 
         })
     }, [])
-  //  console.log("CurretUser", auth.currentUser)
+  //console.log("User",user)
   return (
     // <Router>
     // <Switch>
