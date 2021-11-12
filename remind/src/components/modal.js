@@ -9,7 +9,7 @@ function Modal ({ showModal, setShowModal, user }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     createNotes(title, note, user)
+     createNotes(title, note, user.email)
      .then(() => {
       console.log('Ya esta en FireStore')
       setShowModal((visible) => !visible)

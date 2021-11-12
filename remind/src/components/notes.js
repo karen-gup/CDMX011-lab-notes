@@ -1,27 +1,34 @@
 import React, {useEffect, useState} from "react";
 import { db } from "../firebase/config";
-import {removeNote} from '../firebase/firestore';
+import {notesRef, removeNote} from '../firebase/firestore';
 import swal from 'sweetalert';
 import remove from '../img/remove.png'
 import "./styles/notes.css";
 
 function Notes (user) {
     const [notes, setNotes] = useState([]);
-    let userCollection = notes.map((note)=> note.user.email)
-    const userValue= Object.values(user.user)
-    console.log(userCollection.includes(userValue[0])) 
+    // let userCollection = notes.map((note)=> note.user.email)
+    
+    // console.log(userValue) 
     useEffect(() => {
-        const getNotes = async () => {  
-          db.collection('reminds').onSnapshot((querySnapshot) => {
-              const docs = [];
-              querySnapshot.forEach((doc) => {
-              docs.push({ ...doc.data(), id: doc.id });
+      const saveUser= user.user;
+      const userValue= Object.values(saveUser).toString()
+        const getNotes =  () => {  
+          notesRef.where('user', '==', userValue)
+            .onSnapshot((snapshot) => {
+              let docs = [];
+              snapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id })
+           
+               // console.log(docs)
               });
-              setNotes(docs);
-            });
+             
+              setNotes(docs)
+            })
           };
         getNotes();
       }, []);
+    
     
       const alertRemove =(id) => {
         swal({

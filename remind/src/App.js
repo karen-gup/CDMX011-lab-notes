@@ -1,40 +1,51 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  BrowserRouter,
 } from "react-router-dom";
 import { auth } from './firebase/config';
 import { useState, useEffect } from 'react';
 import Login from './components/login';
 import Register from './components/register';
+import PrivateRoute from "./components/privateRoute";
 import WallNotes from './components/wallNotes'
-import {Banner} from './components/banner';
+import './App.css';
+
+
 
 function App() {
+  
   const [user, setUser] = useState({});
-        useEffect(() => {
+  
+    useEffect(() => {
         auth.onAuthStateChanged(user => {
             if(user) {
               setUser({email: user.email})
-            }
+            } 
         })
     }, [])
-    // console.log(user)
+  //  console.log("CurretUser", auth.currentUser)
   return (
+    // <Router>
+    // <Switch>
+    // <Route exact path="/" component={logIn} />
+    // <Route path="/signin" component={Register} />
+    //   <PrivateRoute path="/wallNotes" component={WallNotes}/>
+    //         </Switch> 
+    // </Router>
+
     <Router>
         <Switch>
           <Route path="/" exact>
-            <Banner/>
             <Login setUser={setUser}/>
           </Route>
             <Route path="/signin">
-              <Banner/>
               <Register/>
             </Route>
-            <Route path="/wallNotes">
+            <PrivateRoute path="/wallNotes">
               <WallNotes user={user}/>
-            </Route>
+            </PrivateRoute>
         </Switch> 
     </Router>
   );

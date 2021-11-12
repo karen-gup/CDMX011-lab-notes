@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUser, gmailAuth } from "../firebase/auth";
 import { Link, useHistory } from "react-router-dom"
+import { Banner } from "./banner";
 import google from "../img/google.png"
 import "./styles/forms.css"
 function Register (){
@@ -36,6 +37,7 @@ function Register (){
     
     return (
         <div className="first-body">
+           <Banner/>
             <form className="form-container">
                 <h1 className="form-header">REGISTRATE</h1>
                 <br/>
