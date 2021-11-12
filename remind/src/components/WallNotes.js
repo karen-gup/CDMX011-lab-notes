@@ -13,7 +13,7 @@ function Wallnotes ({user}) {
    
     setShowModal((visible) => !visible);
     };
-    // console.log(userCurrent)
+   // console.log(user)
 
 return(
         <div className="body-wall">

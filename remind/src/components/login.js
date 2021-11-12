@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { logIn, gmailAuth } from "../firebase/auth";
 import { Link, useHistory } from "react-router-dom"
-
+import { Banner } from "./banner";
 import google from "../img/google.png"
 import "./styles/forms.css"
 
@@ -38,7 +38,8 @@ function Login () {
 
     return (
            <div className="first-body">
-                <form className="form-container">
+               <Banner/>
+                <form className="form-container" onSubmit={handleSignIn}>
                     <h1 className="form-header">INICIA SESIÓN</h1>
                     <input onChange={(e) => { setEmail(e.target.value); } }
                         id="email" type="email" placeholder="Correo electronico" />
@@ -48,7 +49,7 @@ function Login () {
                     <br />
                     <p className="error-p">{error} </p>
                     <br />
-                    <button onClick={handleSignIn}
+                    <button 
                         type="submit" className="btn-form">ENTRAR</button>
                     <br/>
                     <button onClick={handleGmail}

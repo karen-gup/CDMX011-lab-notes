@@ -5,11 +5,11 @@ import "./styles/modal.css"
 function Modal ({ showModal, setShowModal, user }) {
  const [title, setTitle] = useState('');
  const [note, setNote] = useState('');
- 
+// const dates= new Date().toLocaleDateString();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     createNotes(title, note, user)
+     createNotes(title, note, user.email)
      .then(() => {
       console.log('Ya esta en FireStore')
       setShowModal((visible) => !visible)
