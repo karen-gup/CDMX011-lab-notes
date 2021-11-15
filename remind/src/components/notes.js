@@ -11,7 +11,7 @@ function Notes (user) {
     console.log(userValue); 
     useEffect(() => {
         const getNotes =  () => {  
-          notesRef.onSnapshot((snapshot) => {
+          notesRef.orderBy('date','desc').onSnapshot((snapshot) => {
               let docs = [];
               snapshot.forEach((doc) => {
                 docs.push({ ...doc.data(), id: doc.id })
@@ -27,8 +27,8 @@ function Notes (user) {
     
       const alertRemove =(id) => {
         swal({
-          title: "Eliminar",
-          text: "¿deseas eliminar esta nota?",
+          title: "¿Deseas eliminar esta nota?",
+          text: "No se podrá recuperar el contenido",
           icon: "warning",
           buttons:["No","Sí"]
         }).then(confirm => {
@@ -50,7 +50,7 @@ return (
                 <h2 className="title-note">{note.title}</h2>
                 <p className="text-note">{note.note}</p>
               <div className="content-delete">
-              {/* <p>{note.dates}</p> */}
+              <small>modificado:{note.date.toDate().toLocaleString()}</small>
                 <img onClick={()=>alertRemove(note.id)}
                 src={remove} alt="icon-img" className="icon-remove" />
               </div>
