@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+    .banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 120px;
+        width: 100%;
+        background: #864879;
+        font-family: 'Handlee', cursive;
+        font-size: 85px;
+        font-weight: 700;
+        color: #F9F9F9;
+}
+    .icon-app {
+        width: 112px;
+        height: 112px;
+    }
+
+    .title-icon{
+        display: flex;
+    }
