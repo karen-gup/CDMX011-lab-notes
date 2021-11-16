@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { createNotes } from '../firebase/firestore';
 import "./styles/modal.css"
 
-function Modal ({ showModal, setShowModal, user }) {
+function Modal ({ openModal, closeShowModal, user }) {
  const [title, setTitle] = useState('');
  const [note, setNote] = useState('');
-
 // const dates= new Date().toLocaleDateString();
 
   const handleSubmit = (e) => {
@@ -13,14 +12,14 @@ function Modal ({ showModal, setShowModal, user }) {
      createNotes(title, note, user.email, new Date())
      .then(() => {
       console.log('Ya esta en FireStore')
-      setShowModal((visible) => !visible)
+      closeShowModal((visible) => !visible)
      })
   };
-  return showModal ? (
+  return openModal ? (
     <section className="modal">
       <form className="form-createNote"onSubmit={handleSubmit} >
       <div className="content-btn-close">
-        <button className="btn-close" onClick={() => setShowModal((visible) => !visible)}>x</button>
+        <button className="btn-close" onClick={() => closeShowModal((visible) => !visible)}>x</button>
       </div>
         <input onChange={(e) => {setTitle(e.target.value)}}
         name="title-note" id="title-note" placeholder="Título"/>
