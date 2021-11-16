@@ -10,8 +10,8 @@ function Wallnotes ({user}) {
 
     const [showModal, setShowModal] = useState(false);
     const openModal = () => {
-   
-    setShowModal((visible) => !visible);
+      setShowModal((visible) => !visible);
+      console.log('abreModal')
     };
    // console.log(user)
 

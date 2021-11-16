@@ -57,7 +57,7 @@ return (
               <small className="date">Modificado:{note.date.toDate().toLocaleString()}</small>
                 <img onClick={()=>alertRemove(note.id)}
                 src={remove} alt="icon-delete" className="icon-remove" />
-                <img onClick={editModal(note.id)}
+                <img onClick={()=>editModal(note.id)}
                 src={edit} alt="icon-edit" className="icon-edit"/>
               </div>
             </section>
