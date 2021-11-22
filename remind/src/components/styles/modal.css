@@ -41,7 +41,7 @@
     border-radius: 15px;
     margin-top: 8%;
 }
-.btn-add-note {
+.btn-add-note, .btn-edit-note {
     font-family: 'Handlee', cursive;
     font-weight: 600;
     font-size: 30px;
@@ -57,6 +57,11 @@
     align-items: center;
     justify-content: space-around;
 }
+.btn-edit-note{
+    background: #F9F9F9;
+    color: #864879;
+}
+
 #title-note{
     width: 80%;
     font-size: 35px;
@@ -74,4 +79,5 @@
     border-radius: 10px;
     margin-bottom: 5px;
     border: 2px solid #864879;
+    padding: 1rem;
 }
