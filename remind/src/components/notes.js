@@ -43,7 +43,7 @@ function Notes (user) {
      }
     
      const editModal = (id, title, note) => {
-       console.log('Boton editar', title, note )
+       console.log('Boton editar', id, title, note )
        setShowModal((visible) => !visible);
      }
       
@@ -62,15 +62,15 @@ return (
                 <img onClick={()=>editModal(note.id, note.title, note.note)}
                 src={edit} alt="edit-note" className="icon-edit"/>
               </div>
-                <Modal
+                {showModal && <Modal
                  showModal={showModal} 
                  setShowModal={setShowModal} 
                  user={user}
                  mood='edit'
                  id={note.id}
-                 note={note.note}
-                 title={note.title}
-                />
+                //  note={note.note}
+                //  title={note.title}
+                />}
             </section>
 
   ): null
