@@ -14,8 +14,7 @@ function Wallnotes ({user}) {
       console.log('abreModal')
     };
    // console.log(user)
-
-return(
+return( 
         <section className="body-wall">
               <BannerWall/>
           <div className="main-bnt">

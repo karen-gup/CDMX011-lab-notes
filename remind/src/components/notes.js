@@ -67,6 +67,7 @@ return (
                  setShowModal={setShowModal} 
                  user={user}
                  mood='edit'
+                 id={note.id}
                 />
             </section>
 
