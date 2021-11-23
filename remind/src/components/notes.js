@@ -42,8 +42,8 @@ function Notes (user) {
         });
      }
     
-     const editModal = (id) => {
-       console.log('Soy el boton editar',id )
+     const editModal = (id, title, note) => {
+       console.log('Boton editar', title, note )
        setShowModal((visible) => !visible);
      }
       
@@ -59,7 +59,7 @@ return (
               <small className="date">Modificado:{note.date.toDate().toLocaleString()}</small>
                 <img onClick={()=>alertRemove(note.id)}
                 src={remove} alt="delete-note" className="icon-remove" />
-                <img onClick={()=>editModal(note.id)}
+                <img onClick={()=>editModal(note.id, note.title, note.note)}
                 src={edit} alt="edit-note" className="icon-edit"/>
               </div>
                 <Modal
@@ -68,6 +68,8 @@ return (
                  user={user}
                  mood='edit'
                  id={note.id}
+                 note={note.note}
+                 title={note.title}
                 />
             </section>
 

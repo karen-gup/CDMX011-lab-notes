@@ -2,19 +2,31 @@ import React, { useState } from "react";
 import { createNotes, editNote } from '../firebase/firestore';
 import "./styles/modal.css"
 
-function Modal ({ showModal, setShowModal, user, mood, id }) {
+function Modal ({ showModal, setShowModal, user, mood, id, note, title }) {
  // const { id, title, note }= notes
  const [newTitle, setNewTitle] = useState('');
  const [newNote, setNewNote] = useState('');
 
 
-// const [updTitle, setUpdTitle] =useState(newTitle);
-//  const [updNote, setUpdNote] = useState(note);
+const [updTitle, setUpdTitle] =useState(title);
+ const [updNote, setUpdNote] = useState(note);
 
  
-  const handleTitle =(e) => {
+  const handleTitle =(e,id) => {
+      if(mood=== 'edit'){
+        setUpdTitle(id)
+      }else{  
       setNewTitle(e.target.value)
     }
+  }
+  
+  const handleNote =(e) => {
+    if(mood=== 'edit'){
+      setUpdNote(e.target.value)
+    }else{
+      setNewNote(e.target.value)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,9 +61,10 @@ function Modal ({ showModal, setShowModal, user, mood, id }) {
       <div className="container-modal">
         <button className="btn-close" onClick={() => setShowModal((visible) => !visible)}>x</button>
        <form className="form-createNote" onSubmit={handleSubmit} >
-          <input onChange={handleTitle} maxLength="22"
-           value={newTitle} name="title-note" id="title-note" placeholder="Título"/>
-          <textarea onChange={(e) => {setNewNote(e.target.value)}} rows="15" maxLength="120"
+          <input onChange={handleTitle} maxLength="22" value={updTitle}
+           name="title-note" id="title-note" placeholder="Título"/>
+          <textarea onChange={handleNote} rows="15" maxLength="120"
+            value={updNote}
             name="text-note" id="text-note" placeholder="Escribe tu nota">
           </textarea>
         {   mood==='edit'?
