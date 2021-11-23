@@ -14,9 +14,8 @@ function Wallnotes ({user}) {
       console.log('abreModal')
     };
    // console.log(user)
-
-return(
-        <div className="body-wall">
+return( 
+        <section className="body-wall">
               <BannerWall/>
           <div className="main-bnt">
             <p className="text-profile">My reminds <br/> {user.email}</p>
@@ -25,7 +24,7 @@ return(
           </div> 
               <Modal showModal={showModal} setShowModal={setShowModal} user={user}/>
               <Notes user={user}/>
-      </div>
+      </section>
     ) 
 }
 export default Wallnotes
