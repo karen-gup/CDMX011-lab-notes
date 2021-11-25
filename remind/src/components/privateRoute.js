@@ -1,24 +1,25 @@
 // import React from "react";
-// import { Route, Redirect } from "react-router-dom";
-// import { auth } from './firebase/config';
+import { useState, useEffect} from "react";
+import { Route, Redirect } from "react-router-dom";
+import { auth } from '../firebase/config';
 
-
-
-// function PrivateRoute  (props)  {
+export default function PrivateRoute  ({component: Componet, ...rest})  {
+  const [user, setUser] = useState({});
   
-//   return (
-//     <Route {...props}/>
-//   );
-// /*   const userCurrent= userCurrent
-// if(!userCurrent) {
-//   return <Redirect to="/"/>
-// }/* else {
-//   return <Redirect to="/wallNotes"/>
-// }
- 
-// return (
-//   <Route{...props} />
-// ) */
+useEffect(() => {
+    auth.onAuthStateChanged(user => {
+        if(user) {
+          setUser({email: user.email})
+        } else{
+          setUser(null)
+        }
+    })
+}, [])
 
-// };
-// export default PrivateRoute
+
+    return (
+      <Route {...rest}>{user?<Componet/> : <Redirect to="/" /> } </Route>
+    )
+
+
+};
