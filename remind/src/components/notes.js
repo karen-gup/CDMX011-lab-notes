@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {notesRef, removeNote} from '../firebase/firestore';
+import {notesRef, removeNote, getDetailnote} from '../firebase/firestore';
 import Modal from "./modal";
 import swal from 'sweetalert';
 import remove from '../img/remove.png'
@@ -10,14 +10,14 @@ function Notes (user) {
     const [notes, setNotes] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const userValue= Object.values(user.user).toString();
-    
+    // const [updTitle, setUpdTitle] =useState(title);
+    // const [updNote, setUpdNote] = useState(note);
     useEffect(() => {
         const getNotes =  () => {  
           notesRef.orderBy('date','desc').onSnapshot((snapshot) => {
               let docs = [];
               snapshot.forEach((doc) => {
                 docs.push({ ...doc.data(), id: doc.id })
-                       //   console.log(docs)
               });
              
               setNotes(docs)
@@ -42,9 +42,15 @@ function Notes (user) {
         });
      }
     
-     const editModal = (id, title, note) => {
-       console.log('Boton editar', id, title, note )
+     const editModal = async(id, title, note) => {
+      await getDetailnote(id).then((doc) => {
+        if (doc.exists) {
+          const noteContent= doc.data(id).note
+            console.log("Document data:", noteContent);
+        }
+      })
        setShowModal((visible) => !visible);
+       console.log(id, title, note)
      }
       
 return (
@@ -68,8 +74,8 @@ return (
                  user={user}
                  mood='edit'
                  id={note.id}
-                //  note={note.note}
-                //  title={note.title}
+                 note={note.note}
+                 title={note.title}
                 />}
             </section>
 

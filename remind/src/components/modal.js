@@ -2,33 +2,30 @@ import React, { useState, useEffect } from "react";
 import { createNotes, editNote, getDetailnote } from '../firebase/firestore';
 import "./styles/modal.css"
 
-function Modal ({ showModal, setShowModal, user, mood, id/* , title, note */ }) {
+function Modal ({ showModal, setShowModal, user, mood, id, title, note }) {
  // const { id, title, note }= notes
  const [newTitle, setNewTitle] = useState('');
  const [newNote, setNewNote] = useState('');
-const [detail,setDetail] = useState(null)
+// const [detail,setDetail] = useState(null)
 
-// const [updTitle, setUpdTitle] =useState(title);
-//  const [updNote, setUpdNote] = useState(note);`
+const [updTitle, setUpdTitle] =useState(title);
+ const [updNote, setUpdNote] = useState(note);
 
-useEffect(()=>{
-getDetailnote(id).then((doc) => {
-  if (doc.exists) {
-      console.log("Document data:", doc.data());
-  } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-  }
-}).catch((error) => {
-  console.log("Error getting document:", error);
-});
-},[])
+// getDetailnote(id).then((doc) => {
+//   if (doc.exists) {
+//       console.log("Document data:", doc.data(id).note);
+//   } else {
+//       console.log("No such document!");
+//   }
+// }).catch((error) => {
+//   console.log("Error getting document:", error);
+// });
 
-console.log('Para editar', id)
- 
+
+// console.log('Para editar', id)
   const handleTitle =(e) => {
       setNewTitle(e.target.value)
-    
+    console.log(updTitle, updNote)
   }
   
   const handleNote =(e) => {

@@ -1,19 +1,30 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
-// import { getUser } from '../firebase/auth';
+import { useState, useEffect } from "react";
+import { auth } from '../firebase/config';
 import Modal from "./modal";
 import Notes from './notes';
 import {BannerWall} from "./banner"
 import "./styles/notes.css"
 
-function Wallnotes ({user}) {
+function Wallnotes () {
+  const [user, setUser] = useState({});
+  
+useEffect(() => {
+    auth.onAuthStateChanged(user => {
+        if(user) {
+          setUser({email: user.email})
+        } 
+    })
+}, [])
+
+
 
     const [showModal, setShowModal] = useState(false);
     const openModal = () => {
       setShowModal((visible) => !visible);
       console.log('abreModal')
     };
-   // console.log(user)
+
 return( 
         <section className="body-wall">
               <BannerWall/>
