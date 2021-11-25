@@ -1,44 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { createNotes, editNote, getDetailnote } from '../firebase/firestore';
+import React, { useState } from "react";
+import { createNotes, editNote } from '../firebase/firestore';
 import "./styles/modal.css"
 
-function Modal ({ showModal, setShowModal, user, mood, id, title, note }) {
- // const { id, title, note }= notes
- const [newTitle, setNewTitle] = useState('');
- const [newNote, setNewNote] = useState('');
-// const [detail,setDetail] = useState(null)
+ function Modal ({ showModal, setShowModal, user, mood, id, title, note}) {
+  
 
-const [updTitle, setUpdTitle] =useState(title);
- const [updNote, setUpdNote] = useState(note);
-
-// getDetailnote(id).then((doc) => {
-//   if (doc.exists) {
-//       console.log("Document data:", doc.data(id).note);
-//   } else {
-//       console.log("No such document!");
-//   }
-// }).catch((error) => {
-//   console.log("Error getting document:", error);
-// });
+  const [updateTitle, setUpdateTitle] = useState(title)
+  const [updateNote, setUpdateNote] = useState(note)
+  const [newTitle, setNewTitle] = useState("");
+  const [newNote, setNewNote] = useState("");
 
 
-// console.log('Para editar', id)
+
+
   const handleTitle =(e) => {
+    console.log("Document data:", title, note, id)
+    if(mood==='edit'){
+        setUpdateTitle(e.target.value)
+    }else{
       setNewTitle(e.target.value)
-    console.log(updTitle, updNote)
+    }
   }
   
+  
   const handleNote =(e) => {
+    if(mood==='edit'){
+      setUpdateNote(e.target.value)
+    }else{
       setNewNote(e.target.value)
+    }
   }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if(mood=== 'edit'){
       
       editNote(id).update({
-        title:newTitle,
-        note: newNote,
+        title:updateTitle,
+        note: updateNote,
         date: new Date()
       })
       .then(() => {
@@ -65,10 +65,10 @@ const [updTitle, setUpdTitle] =useState(title);
       <div className="container-modal">
         <button className="btn-close" onClick={() => setShowModal((visible) => !visible)}>x</button>
        <form className="form-createNote" onSubmit={handleSubmit} >
-          <input onChange={handleTitle} maxLength="22" /* value={updTitle} */
+          <input onChange={handleTitle} maxLength="22" value={mood==='edit'?updateTitle:newTitle}
            name="title-note" id="title-note" placeholder="Título"/>
           <textarea onChange={handleNote} rows="15" maxLength="120"
-            /* value={updNote} */
+          
             name="text-note" id="text-note" placeholder="Escribe tu nota">
           </textarea>
         {   mood==='edit'?

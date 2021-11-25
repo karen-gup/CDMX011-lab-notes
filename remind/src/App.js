@@ -5,14 +5,16 @@ import {
   } from "react-router-dom";
 import Login from './components/login';
 import Register from './components/register';
-import WallNotes from './components/WallNotes'
+import WallNotes from './components/WallNotes';
 import PrivateRoute from "./components/privateRoute";
 import { NoFound } from "./components/error404";
 import './App.css';
 
 
 
-function App() {
+
+export default function App() {
+
 
   return (
     <Router>
@@ -26,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+

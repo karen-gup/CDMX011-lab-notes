@@ -15,7 +15,9 @@ useEffect(() => {
         }
     })
 }, [])
-
+// const user = auth.currentUser
+// const user = null
+console.log(user)
 
     return (
       <Route {...rest}>{user?<Componet/> : <Redirect to="/" /> } </Route>
