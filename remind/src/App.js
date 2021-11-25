@@ -7,8 +7,8 @@ import { auth } from './firebase/config';
 import { useState, useEffect } from 'react';
 import Login from './components/login';
 import Register from './components/register';
-import PrivateRoute from "./components/privateRoute";
-import WallNotes from './components/wallNotes'
+import WallNotes from './components/WallNotes'
+import { NoFound } from "./components/error404";
 import './App.css';
 
 
@@ -42,9 +42,12 @@ function App() {
             <Route path="/signin">
               <Register/>
             </Route>
-            <PrivateRoute path="/wallNotes">
+            <Route path="/wallNotes">
               <WallNotes user={user}/>
-            </PrivateRoute>
+            </Route>
+            <Route>
+              <NoFound/>
+            </Route>
         </Switch> 
     </Router>
   );
