@@ -26,9 +26,7 @@
     right: 3rem;
 }
 
-.modal.is-open{
-    display: flex;
-}
+
 
 .form-createNote {
     display: flex;
@@ -62,7 +60,7 @@
     color: #864879;
 }
 
-#title-note{
+#title {
     width: 80%;
     font-size: 35px;
     color: #864879;
@@ -70,7 +68,7 @@
     border-radius: 10px;
 }   
 
-#text-note {
+#note {
     width: 80%;
     height: 75%;
     color: #864879;

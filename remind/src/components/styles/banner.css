@@ -3,7 +3,7 @@
     .banner {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
         height: 120px;
         width: 100%;
         background: #864879;
@@ -11,6 +11,8 @@
         font-size: 85px;
         font-weight: 700;
         color: #F9F9F9;
+        padding-left: 3rem;
+        padding-right: 3rem;
 }
     .icon-app {
         width: 112px;
