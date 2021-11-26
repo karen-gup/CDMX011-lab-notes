@@ -10,9 +10,8 @@ function Notes(user) {
   const [notes, setNotes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const userValue = Object.values(user.user).toString();
-  const [idNote, setIdNote] = useState('');
-  const [noteTitle, setNoteTitle] = useState('');
-  const [noteContent, setNoteContent] = useState('');
+  const [selectedNote, setSelectedNote] = useState(null);
+
   useEffect(() => {
     const getNotes = () => {
       notesRef.orderBy('date', 'desc').onSnapshot((snapshot) => {
@@ -45,15 +44,8 @@ function Notes(user) {
     });
   }
 
-  const editModal = async (id, title, note) => {
-    await getDetailnote(id).then((doc) => {
-      if (doc.exists) {
-        setIdNote(id)
-        setNoteContent(doc.data(id).note)
-        setNoteTitle(doc.data(id).title)
-
-      }
-    })
+  const editModal =  (note) => {
+    setSelectedNote(note)
     setShowModal((visible) => !visible);
 
   }
@@ -71,7 +63,7 @@ function Notes(user) {
                 <small className="date">Modificado:{note.date.toDate().toLocaleString()}</small>
                 <img onClick={() => alertRemove(note.id)}
                   src={remove} alt="delete-note" className="icon-remove" />
-                <img onClick={() => editModal(note.id, note.title, note.note)}
+                <img onClick={() => editModal(note)}
                   src={edit} alt="edit-note" className="icon-edit" />
               </div>
 
@@ -79,15 +71,11 @@ function Notes(user) {
 
           ) : null
       )}
-      <Modal
+      {selectedNote && <Modal
         showModal={showModal}
         setShowModal={setShowModal}
-        user={user}
-        mood='edit'
-        id={idNote}
-        title={noteTitle}
-        note={noteContent}
-      />
+        selectedNote={selectedNote}
+      />}
     </div>
   )
 }
