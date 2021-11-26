@@ -45,10 +45,9 @@ function Notes(user) {
   }
 
   const editModal = (note) => {
-    
     setShowModal((visible) => !visible);
     setSelectedNote(note);
-    console.log(note)
+    
   }
 
   return (
