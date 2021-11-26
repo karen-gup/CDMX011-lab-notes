@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { notesRef, removeNote, getDetailnote } from '../firebase/firestore';
+import { notesRef, removeNote } from '../firebase/firestore';
 import Modal from "./modal";
 import swal from 'sweetalert';
 import remove from '../img/remove.png'
@@ -44,12 +44,12 @@ function Notes(user) {
     });
   }
 
-  const editModal =  (note) => {
-    setSelectedNote(note)
+  const editModal = (note) => {
+    
     setShowModal((visible) => !visible);
-
+    setSelectedNote(note);
+    console.log(note)
   }
-
 
   return (
     <div className="div-notes">
@@ -71,7 +71,7 @@ function Notes(user) {
 
           ) : null
       )}
-      {selectedNote && <Modal
+      {selectedNote  && <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         selectedNote={selectedNote}

@@ -7,7 +7,9 @@ import "./styles/notes.css"
 
 function Wallnotes () {
   const [user, setUser] = useState({});
-  const newNote = { title: "", information: "", date: "" };
+  const newNote = { title: "", 
+                  note: "", 
+                  date: "" };
   useEffect(() => {
     auth.onAuthStateChanged(user => {
         if(user) {
@@ -33,8 +35,8 @@ return(
               <Modal 
               showModal={showModal} 
               setShowModal={setShowModal} 
+              selectedNote={newNote}
               user={user}
-              notes={newNote}
               />
               <Notes user={user}/>
       </section>
