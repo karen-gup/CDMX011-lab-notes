@@ -40,7 +40,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 320px;
+    width: 45%;
     height: 100%;
     background: #F5DFF0;
     color: #864879;
@@ -58,7 +58,7 @@
     font-family: Handlee;
     font-weight: 600;
     font-size: 22px;
-    margin-bottom: 5px;
+    margin-bottom: 1rem;
 }
 
 .text-note {
@@ -73,6 +73,6 @@
 .content-delete {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }

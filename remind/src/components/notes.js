@@ -9,8 +9,9 @@ import "./styles/notes.css";
 function Notes(user) {
   const [notes, setNotes] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const userValue = Object.values(user.user).toString();
   const [selectedNote, setSelectedNote] = useState(null);
+  const userValue = Object.values(user.user).toString();
+
 
   useEffect(() => {
     const getNotes = () => {
@@ -60,10 +61,12 @@ function Notes(user) {
               <p className="text-note">{note.note}</p>
               <div className="content-delete">
                 <small className="date">Modificado:{note.date.toDate().toLocaleString()}</small>
+               <figure>
                 <img onClick={() => alertRemove(note.id)}
                   src={remove} alt="delete-note" className="icon-remove" />
                 <img onClick={() => editModal(note)}
                   src={edit} alt="edit-note" className="icon-edit" />
+               </figure>   
               </div>
 
             </section>

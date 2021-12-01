@@ -2,21 +2,23 @@ import React, { useState } from "react";
 import { createNotes, editNote } from '../firebase/firestore';
 import "./styles/modal.css"
 
-function Modal({ showModal, setShowModal, user ,selectedNote = { title: "", message: ""} }) {
+function Modal({ showModal, setShowModal, user ,selectedNote  }) {
   const [note, setnote] = useState(selectedNote)
-  
+
   const handleInput = (e) => {
     setnote({ ...note, [e.target.id]: e.target.value })
+    
   }
-
+ 
   const handleClose = () => {
+    setnote(selectedNote);
     setShowModal((visible) => !visible)
-    setnote(prevNote => prevNote = selectedNote);
-    console.log(note)
+     console.log(note);
   }
 
   const handleEdit = (e) => {
-      editNote(note.id).update({
+    e.preventDefault()
+      editNote(note.id,{
         title: note.title,
         note: note.note,
         date: new Date()
@@ -24,14 +26,14 @@ function Modal({ showModal, setShowModal, user ,selectedNote = { title: "", mess
         .then(() => {
           console.log('Ya esta editado');
           setShowModal((visible) => !visible)
-          setnote(prevNote => prevNote = selectedNote);
-          console.log(note)
+          setnote(selectedNote);
+          // console.log(selectedNote)
         })
   }    
 
   const handleCreate = (e) => {
-    e.target.reset()
-        createNotes().set({
+    e.preventDefault()
+        createNotes({
         title: note.title,
         note: note.note,
         user: user.email,
@@ -39,9 +41,12 @@ function Modal({ showModal, setShowModal, user ,selectedNote = { title: "", mess
       })
         .then(() => {
           console.log('Ya esta en FireStore');
-          console.log(note.title, note.note, user.email)
           setShowModal((visible) => !visible);
           setnote(selectedNote);
+        })
+        .catch((error)=> {
+          console.log(error.message)
+          console.log('no se subio')
         })
     
   };
@@ -52,16 +57,16 @@ function Modal({ showModal, setShowModal, user ,selectedNote = { title: "", mess
     <section className="modal">
       <div className="container-modal">
         <button className="btn-close" onClick={handleClose}>x</button>
-        <form className="form-createNote" /* onSubmit={handleSubmit} */ >
+        <form className="form-createNote" >
           <input onChange={handleInput} maxLength="22"
             name="title" id="title" placeholder="Título" value={note.title} />
           <textarea onChange={handleInput} rows="15" maxLength="120" name="note" id="note"
             placeholder="Escribe tu nota" value={note.note} />
           {note.id ?
             <button onClick={handleEdit}
-            /* type="submit" */ className="btn-edit-note">Actualizar</button> :
+            className="btn-edit-note">Actualizar</button> :
             <button onClick={handleCreate}
-            /* type="submit" */ className="btn-add-note">Guardar</button>
+            className="btn-add-note">Guardar</button>
           }
         </form>
       </div>

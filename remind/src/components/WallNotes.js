@@ -7,6 +7,7 @@ import "./styles/notes.css"
 
 function Wallnotes () {
   const [user, setUser] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const newNote = { title: "", 
                   note: "", 
                   date: "" };
@@ -18,7 +19,6 @@ function Wallnotes () {
     })
 }, [])
 
-    const [showModal, setShowModal] = useState(false);
     const openModal = () => {
       setShowModal((visible) => !visible);
       console.log('abreModal')
