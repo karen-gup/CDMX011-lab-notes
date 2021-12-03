@@ -71,3 +71,8 @@
     .error-p{
         color: rgb(199, 21, 21);
     }
+
+    .btn-rute{
+        border: none;
+        background: none;
+    }

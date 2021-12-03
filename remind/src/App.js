@@ -20,8 +20,8 @@ export default function App() {
     <Router>
     <Switch>
     <Route exact path="/" component={Login} />
-    <Route exact path="/signin" component={Register} />
-    <PrivateRoute exact path="/wallNotes" component={WallNotes}/>
+    <Route path="/signin" component={Register} />
+    <PrivateRoute path="/wallNotes" component={WallNotes}/>
     <Route component={NoFound}/>
     </Switch> 
     </Router>

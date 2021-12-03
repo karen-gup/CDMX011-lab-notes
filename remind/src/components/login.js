@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { logIn, gmailAuth } from "../firebase/auth";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { Banner } from "./banner";
 import google from "../img/google.png"
 import "./styles/forms.css"
@@ -26,15 +26,16 @@ function Login () {
         e.preventDefault()
         gmailAuth()
         .then((result) => {
-            history.push('/wallNotes')
+            history.push('/wallNotes');
             const user = result.user.displayName;
             const userPhoto = result.user.photoURL;
             console.log(user, userPhoto);
-            console.log('Logeado con Gmail')
+            console.log('Logeado con Gmail');
         }).catch((error) => {
             console.log(error.message);
           });
     }
+
 
     return (
            <div className="first-body">
@@ -56,7 +57,8 @@ function Login () {
                         className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                     <br />
                     <p className="text-link">¿No tienes cuenta?
-                        <Link to="/signin"> Regístrate</Link>
+                        <button onClick={history.push('/signin')}
+                        className="btn-rute"> Regístrate</button>
                     </p>
                 </form>
             </div>)
