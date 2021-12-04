@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createUser, gmailAuth } from "../firebase/auth";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { Banner } from "./banner";
 import google from "../img/google.png"
 import "./styles/forms.css"
@@ -59,7 +59,8 @@ function Register (){
                     className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                 <br />
                 <p className="text-link">¿Ya tienes una cuenta?
-                        <Link to="/"> Inicia Sesión</Link>
+                        <button  onClick={ history.push('/')}
+                        className="btn-routr"> Inicia Sesión</button>
                 </p>
                 </form>
             </div>)

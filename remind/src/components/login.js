@@ -35,7 +35,9 @@ function Login () {
             console.log(error.message);
           });
     }
-
+    const handleRegister = () => {
+        history.push('/signin')
+    }
 
     return (
            <div className="first-body">
@@ -57,7 +59,7 @@ function Login () {
                         className="g-btn-form">CONTINUAR CON <img src={google} alt="google-icon" className="icon-g" /></button>
                     <br />
                     <p className="text-link">¿No tienes cuenta?
-                        <button onClick={history.push('/signin')}
+                        <button onClick={handleRegister}
                         className="btn-rute"> Regístrate</button>
                     </p>
                 </form>
